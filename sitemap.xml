@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://guillermobosca.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://guillermobosca.com/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://guillermobosca.com/articles.html</loc>
+  </url>
+
+  <url>
+    <loc>https://guillermobosca.com/projects/vulkan-engine.html</loc>
+  </url>
+
+  <url>
+    <loc>https://guillermobosca.com/projects/fluid-sim.html</loc>
+  </url>
+
+  <url>
+    <loc>https://guillermobosca.com/projects/voxel-terrain.html</loc>
+  </url>
+
+  <url>
+    <loc>https://guillermobosca.com/projects/infinite-terrain.html</loc>
+  </url>
+
+</urlset>

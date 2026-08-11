@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /projects/template.html
+Disallow: /blog/template.html
+
+Sitemap: https://guillermobosca.com/sitemap.xml
