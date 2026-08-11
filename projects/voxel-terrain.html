@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voxel Space Terrain Renderer — Guillermo Bosca</title>
+<meta name="description" content="A real-time voxel terrain renderer written in C, with a terrain algorithm hand-optimized in ARM64 Assembly.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo">Guillermo Bosca</a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="../index.html" class="active">Home</a>
+      <a href="../articles.html">Articles</a>
+      <a href="../about.html">About</a>
+    </nav>
+    <div class="header-icons">
+      <a class="icon-link" href="https://github.com/kenhacodes" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8.5 6.5 12 9 15.5M15 8.5 17.5 12 15 15.5"/></svg>
+      </a>
+      <a class="icon-link" href="https://linkedin.com/in/guillermo-bosca" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><line x1="7.5" y1="10" x2="7.5" y2="16.5"/><circle cx="7.5" cy="7" r="0.6" fill="currentColor" stroke="none"/><path d="M11.5 16.5V10M11.5 12.5c0-1.5 1-2.5 2.3-2.5 1.3 0 2.2.9 2.2 2.5v4"/></svg>
+      </a>
+      <a class="icon-link" href="../assets/cv/Guillermo_Bosca_CV.pdf" target="_blank" rel="noopener" aria-label="Download CV (PDF)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 12v6M9.5 15.5 12 18l2.5-2.5"/></svg>
+      </a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="project-hero">
+  
+  <div class="wrap">
+    <a class="return-link" href="../index.html">Return</a>
+    <h2>Voxel Space Terrain Renderer</h2>
+  </div>
+</section>
+
+<main class="wrap">
+ <div class="project-video">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/zyIMkYnO2Ts?si=3Nkx8-5FxzdyLoTv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div class="meta-lines">
+    <p><strong>Participants:</strong> 2 </p>
+    <p><strong>Stack:</strong> C, ARM64 Assembly</p>
+    <p><strong>Duration:</strong> 2026</p>
+  </div>
+
+  <div class="project-description">
+
+<p>
+A real-time voxel terrain renderer written in C using the Voxel Space technique as part of a University Assignment.
+</p>
+<p>
+  The goal was to see how far we could optimize the code. Benchmarking after every change to validate everything.
+</p>
+<p>
+  The Voxel space technique works by casting one ray per screen column, marching it through depth and projecting it to a texture with a heightmap and a colour map. We then travel across that ray inside the texture, check and paint it accordingly keeping in mind the heights painted before in that column. 
+
+</p>
+<p>
+  The optimization process started by reusing operations that can be reused, minimizing divisions or other costly operations like sine, and using bit shifts and bitmasks to replace the modulo operations. After that we went for more algorithm specific optimizations like mipmaps with LODs. We also went with some more extreme optimizations like horizontal rendering and tiled transpose with loop unrolling for better cache use, plus joining the height and colour texture into one. We even converted every float in the inner loop to int and used fixed point arithmetic because multiplying integers is faster than floats. After optimizing the inner loop of the algorithm to its core we tried rewriting it in ARM64 to see if we could beat the compiler.
+</p>
+<p>
+  Personally, we are very proud of this project. For this assignment we had the freedom to choose between multiple graphical effects to recreate and optimize, and this effect was rated as the hardest one by far, recommended only for those who wanted a challenge. We not only completed it with a Distinction, but also received praise from our teacher. 
+</p>
+
+  </div>
+
+  <div class="fact-columns">
+    <div class="fact-col">
+      <h3>Highlights</h3>
+      <ul>
+        <li>Real-time voxel terrain renderer with heightmap, camera navigation and a three-tier LOD system.</li>
+        <li>Core terrain algorithm rewritten in ARM64 Assembly to improve performance.</li>
+        <li>Optimizations including lookup tables, loop unrolling, fixed-point arithmetic and cache-aware memory access.</li>
+        <li>Profiled and benchmarked every implementation to validate each optimization.</li>
+      </ul>
+    </div>
+    <div class="fact-col">
+      <h3>Tools</h3>
+      <ul>
+        <li>Git</li>
+        <li>Linux</li>
+      </ul>
+    </div>
+    
+    <div class="fact-col">
+      <h3>Languages</h3>
+      <ul>
+        <li>C</li>
+        <li>ARM64 Assembly</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-slot">
+      <div class="media-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Add image</span>
+      </div>
+      <img src="../assets/img/gallery/voxel1.webp" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="gallery-slot">
+      <div class="media-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Add image</span>
+      </div>
+      <img src="../assets/img/gallery/voxel2.webp" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="gallery-slot">
+      <div class="media-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Add image</span>
+      </div>
+      <img src="../assets/img/covers/covervoxel.webp" alt="" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <div class="next-project">
+    <div class="k">Next</div>
+    <a href="infinite-terrain.html">Infinite Terrain Demo Scene →</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Guillermo Bosca</p>
+    <div class="footer-links">
+      <a href="https://github.com/kenhacodes" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/guillermo-bosca" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:guillermobosca.bro@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
