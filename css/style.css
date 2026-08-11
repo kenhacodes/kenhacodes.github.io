@@ -121,6 +121,16 @@ button{ font-family: var(--font); }
   font-weight: 500;
   transition: color .15s ease;
 }
+.icon-link img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) saturate(100%) invert(70%);
+    transition: filter .15s ease;
+}
+
+.icon-link:hover img {
+    filter: brightness(0) saturate(100%) invert(100%);
+}
 .icon-link svg{ width:20px; height:20px; }
 .icon-link:hover{ color: var(--text); }
 
@@ -143,6 +153,19 @@ button{ font-family: var(--font); }
 .btn.primary{ background: var(--text); border-color: var(--text); color:#0a0a0a; }
 .btn.primary:hover{ background: var(--accent); border-color: var(--accent); }
 .btn svg{ width:18px; height:18px; }
+
+.btn img{
+    width:18px;
+    height:18px;
+    display:block;
+    filter: brightness(0) saturate(100%) invert(70%);
+    transition: filter .15s ease;
+}
+
+.btn:hover img{
+    filter: brightness(0) saturate(100%) invert(100%);
+}
+
 
 /* ---------- Footer ---------- */
 .site-footer{
