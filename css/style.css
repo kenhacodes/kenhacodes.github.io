@@ -41,7 +41,7 @@ body{
 body{
   margin:0;
   padding-top: 10px;
-  background: var(--bg) url("../assets/img/gallery/fondo7.png") top center / 100% auto no-repeat scroll;
+  background: var(--bg) url("../assets/img/gallery/fondo7.webp") top center / 100% auto no-repeat scroll;
   color: var(--text);
   font-family: var(--font);
   font-size: 1.05rem;
