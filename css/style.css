@@ -223,7 +223,7 @@ button{ font-family: var(--font); }
 }
 .card-media video{ opacity:0; }
 .card:hover .card-media img{ transform: scale(1.04); }
-.card:hover .card-media video{ opacity:1; }
+.card-media video.is-playing{ opacity:1; }
 
 .media-placeholder{
   position:absolute; inset:0;

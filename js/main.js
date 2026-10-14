@@ -1,6 +1,6 @@
 // ==========================================================================
 // Guillermo Bosca — Portfolio
-// Shared behaviour: mobile nav toggle, hover-to-play preview media on cards.
+// Shared behaviour: mobile nav toggle, autoplay preview media on cards.
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,28 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---- Card hover preview ----
+  /* ---- Card preview autoplay ----
      Each .card can optionally carry a <video data-hover-src="..."> inside
-     .card-media. On hover/focus it fades in and plays; on leave it pauses
-     and resets. If no data-hover-src is set, the card just does the plain
-     zoom (handled purely in CSS) — nothing to wire up here. */
+     .card-media. It loads and starts playing as soon as the page is ready,
+     and fades in over the cover image once it is actually playing. If no
+     data-hover-src is set, the card just shows the cover image. */
   document.querySelectorAll('.card').forEach((card) => {
     const video = card.querySelector('video[data-hover-src]');
-    if (!video) return;
+    if (!video || !video.dataset.hoverSrc) return;
 
-    let loaded = false;
-    const load = () => {
-      if (loaded) return;
-      video.src = video.dataset.hoverSrc;
-      loaded = true;
-    };
-    const play = () => { load(); video.play().catch(() => {}); };
-    const stop = () => { video.pause(); video.currentTime = 0; };
-
-    card.addEventListener('mouseenter', play);
-    card.addEventListener('focus', play);
-    card.addEventListener('mouseleave', stop);
-    card.addEventListener('blur', stop);
+    video.addEventListener('playing', () => video.classList.add('is-playing'));
+    video.src = video.dataset.hoverSrc;
+    video.play().catch(() => {});
   });
 
 });
